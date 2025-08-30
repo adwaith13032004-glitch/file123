@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+    }
+
+    .sidebar {
+      width: 220px;
+      height: 100vh;
+      background: #2575fc;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 20px;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover {
+      background: #1a5fd3;
+    }
+
+    .main {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: none; /* Hide all by default */
+    }
+
+    .card.active {
+      display: block; /* Only show the active section */
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #2575fc;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a onclick="showSection('patients')">Patient Data</a>
+    <a onclick="showSection('users')">User Data</a>
+    <a onclick="showSection('caretakers')">Caretaker Data</a>
+    <a onclick="showSection('complaints')">Complaints</a>
+    <a onclick="showSection('app-ratings')">App Ratings</a>
+    <a onclick="showSection('caretaker-ratings')">Caretaker Ratings</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="card" id="patients">
+      <h3>Patient Data</h3>
+      <table>
+        <tr><th>Name</th><th>Age</th><th>Condition</th></tr>
+        <tr><td>John Doe</td><td>35</td><td>Diabetes</td></tr>
+        <tr><td>Jane Smith</td><td>42</td><td>Hypertension</td></tr>
+      </table>
+    </div>
+
+    <div class="card" id="users">
+      <h3>User Data</h3>
+      <table>
+        <tr><th>User ID</th><th>Name</th><th>Email</th></tr>
+        <tr><td>U001</td><td>Alice</td><td>alice@mail.com</td></tr>
+        <tr><td>U002</td><td>Bob</td><td>bob@mail.com</td></tr>
+      </table>
+    </div>
+
+    <div class="card" id="caretakers">
+      <h3>Caretaker Data</h3>
+      <table>
+        <tr><th>ID</th><th>Name</th><th>Assigned Patient</th></tr>
+        <tr><td>C001</td><td>David</td><td>John Doe</td></tr>
+        <tr><td>C002</td><td>Susan</td><td>Jane Smith</td></tr>
+      </table>
+    </div>
+
+    <div class="card" id="complaints">
+      <h3>Complaints</h3>
+      <ul>
+        <li>App crashes on login - Reported by Alice</li>
+        <li>Caretaker delay in response - Reported by Bob</li>
+      </ul>
+    </div>
+
+    <div class="card" id="app-ratings">
+      <h3>App Ratings</h3>
+      <p>⭐ 4.2 / 5 (based on 120 reviews)</p>
+    </div>
+
+    <div class="card" id="caretaker-ratings">
+      <h3>Caretaker Ratings</h3>
+      <p>David: ⭐⭐⭐⭐☆ (4.5)</p>
+      <p>Susan: ⭐⭐⭐⭐ (4.0)</p>
+    </div>
+  </div>
+
+  <!-- JavaScript to toggle sections -->
+  <script>
+    function showSection(sectionId) {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Show the first section by default
+    showSection('patients');
+  </script>
+</body>
+</html>
